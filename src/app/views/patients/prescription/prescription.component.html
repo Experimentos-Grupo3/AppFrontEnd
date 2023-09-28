@@ -1,0 +1,48 @@
+<mat-drawer-container>
+  <mat-drawer mode="side" opened="true">
+    <app-sidebar></app-sidebar>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <div class="container">
+      <h1>Prescriptions</h1>
+      <mat-card class="recommendations-card" style="width: 90%;">
+        <div class="recommendations-card-text">
+          <h2 class="h2-recommendations">Recommendations</h2>
+          <h3 class="h3-recommendations"><span class="bold-text">Rest</span>{{ prescription.rest }}</h3>
+          <h3 class="h3-recommendations"><span class="bold-text">Drink</span>{{ prescription.drink }}</h3>
+          <h3 class="h3-recommendations"><span class="bold-text">Try comfort foods and drinks</span>{{ prescription.food }}</h3>
+        </div>
+        <img class="recommendations-card-image" src="assets/images/pill.png" alt="Pill Image">
+      </mat-card>
+
+      <div class="cards" style="display: flex; justify-content: space-between; width: 90%;">
+        <mat-card class="medicine-card" style="width: 30%; min-height: 40%;">
+          <h2>Medicine</h2>
+          <h3 *ngFor="let medicine of prescription.medicines">{{ medicine.medicine }}</h3>
+        </mat-card>
+        <mat-card class="dose-card" style="width: 30%; min-height: 40%;">
+          <h2 class="h2-dose">Dose</h2>
+          <h3><span class="index-number">{{ prescription.numberDose }}</span> Reminders</h3>
+          <div class="meal-hours-wrapper">
+            <ng-container *ngFor="let meal of prescription.meals; let i = index">
+              <div class="meal-hours">
+                <span class="meal">{{ meal }}</span>
+                <span class="hours">{{ prescription.hours[i] }}</span>
+              </div>
+            </ng-container>
+            <span class="spacer"></span>
+          </div>
+        </mat-card>
+        <mat-card class="where-to-get-it-card" style="width: 30%; min-height: 40%;">
+          <h2>Where to get it?</h2>
+          <div class="logos-container">
+            <img src="assets/images/inkafarmaLogo.png" alt="Inkafarma-Logo" class="logo-image">
+            <img src="assets/images/farmaciaUniversalLogo.png" alt="Farmacia-Universal-Logo" class="logo-image">
+            <img src="assets/images/mifarmaLogo.png" alt="Mifarma-Logo" class="logo-image">
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
